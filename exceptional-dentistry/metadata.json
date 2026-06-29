@@ -1,0 +1,6 @@
+{
+  "name": "Exceptional Dentistry",
+  "description": "A luxury dental clinic website with a premium design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
