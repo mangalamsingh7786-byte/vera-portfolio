@@ -13,12 +13,15 @@ export default function Home() {
         
         {/* Center Vertical Image */}
         <motion.div 
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: '100%', opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 1.4 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 1.2 }}
           className="absolute left-1/2 -translate-x-1/2 top-0 w-[55%] md:w-[380px] h-full z-10 overflow-hidden"
         >
-           <img 
+           <motion.img 
+             initial={{ scale: 1.08 }}
+             animate={{ scale: 1 }}
+             transition={{ duration: 2.5, ease: "easeOut", delay: 1.2 }}
              src="/chatgpt-hero.png" 
              alt="VÉRA Dentals Hero" 
              className="w-full h-full object-cover grayscale opacity-90"

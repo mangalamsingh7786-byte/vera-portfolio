@@ -110,10 +110,6 @@ export default function Services() {
             </div>
             
             <div className="md:w-2/3 aspect-[4/3] bg-brand-dark overflow-hidden relative">
-               <div className="absolute top-0 right-0 p-4 z-20 flex justify-between w-full">
-                   <span className="text-brand-gold text-xs tracking-[0.2em]">STATE-OF-THE-ART TECHNOLOGY & COMPREHENSIVE TREATMENTS</span>
-                   <span className="text-white text-xs tracking-[0.2em] border-b border-white/30 pb-1 cursor-pointer hover:text-brand-gold transition-colors">LEARN ABOUT US</span>
-               </div>
                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop" alt="Treatment" className="w-full h-full object-cover opacity-80 grayscale mix-blend-luminosity" />
             </div>
         </div>

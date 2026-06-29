@@ -1,6 +1,22 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate network request
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      // Reset after a few seconds
+      setTimeout(() => setIsSuccess(false), 5000);
+    }, 1500);
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#080B0C] pt-24">
       {/* Hero Section */}
@@ -52,7 +68,20 @@ export default function Contact() {
 
           {/* Form Column */}
           <div className="md:col-span-8">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 relative">
+              <AnimatePresence>
+                {isSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute -top-16 left-0 right-0 bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400 p-4 rounded text-sm text-center"
+                  >
+                    Thank you! Your message has been sent successfully. We will get back to you soon.
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="text-xs text-brand-charcoal dark:text-white mb-2">Name: (required)</label>
@@ -92,8 +121,12 @@ export default function Contact() {
               </div>
 
               <div className="pt-8">
-                <button type="submit" className="border border-gray-300 text-brand-charcoal dark:text-white text-xs tracking-[0.2em] px-10 py-3 hover:bg-brand-charcoal dark:hover:bg-white hover:border-brand-charcoal dark:border-white hover:text-white dark:hover:text-brand-dark transition-all">
-                  SEND
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="border border-gray-300 text-brand-charcoal dark:text-white text-xs tracking-[0.2em] px-10 py-3 hover:bg-brand-charcoal dark:hover:bg-white hover:border-brand-charcoal dark:border-white hover:text-white dark:hover:text-brand-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'SENDING...' : 'SEND'}
                 </button>
               </div>
             </form>
